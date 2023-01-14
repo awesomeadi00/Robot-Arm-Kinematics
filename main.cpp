@@ -18,6 +18,7 @@ void listCommands() {
         << "remove               : Remove the segment at the end of the chain." << endl
         << "reset                : Resets the entire robot." << endl
         << "print segment        : Prints features of Segment <number> from the chain." << endl
+        << "edit segment         : Edits the features of Segment <number> from the chain" << endl
         << "print pose           : Prints the entire Robot Arm (png in directory)" << endl
         << "kinematics           : Calculates the End Effector of the Robot" << endl
         << "help                 : Display the list of available commands" << endl
@@ -64,12 +65,17 @@ int main() {
         else if(command == "remove" or command == "rm") {R.subtractSegment();}
         else if(command == "reset" or command == "r") {
             R.resetRobot();
-            cout << "The Robot Arm has been reset! All segments have collapsed to the X-axis!" << endl;}
+            cout << "The robot arm has been reset! All segments have collapsed to the x-axis!" << endl;}
             
         else if(command == "print segment" or command == "ps") {
-            cout << "Which segment would you like to printInfo? : ";
+            cout << "Which segment would you like to printInfo?: ";
             cin >> num;
             R.printSegNumInfo(num);}
+
+        else if(command == "edit segment" or command == "es") {
+            cout << "Which segment would you like to edit?: ";
+            cin >> num;
+            R.editSegment(num);}
 
         else if(command == "print pose" or command == "pp") {R.printPose();}
         else if(command == "kinematics" or command == "k") {R.kinematicAnalysis();}

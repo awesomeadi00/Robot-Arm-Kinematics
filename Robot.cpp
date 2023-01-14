@@ -98,8 +98,35 @@ void Robot::resetRobot() {
 
 //This function will print out the segment information of a specific segment: 
 void Robot::printSegNumInfo(int num) {
-    if(num >= n or num <= 0) {cout << "This segment number is not currently on the Robot Chain" << endl;}
+    if(num >= n or num <= 0) {cout << "This is an invalid segment number!" << endl;}
     else {segptr[num-1].printSegmentInfo();}
+}
+
+//This function will allow the user to edit the features of a particular segment:
+void Robot::editSegment(int num) {
+    double x, y, length, angle;
+    string str_angle;
+    
+    if(num == 1) {editRoot(); }
+    else if(num <= 0 or num > n) {cout << "This is an invalid segment number!" << endl;}
+   
+    else {
+        cout << "Enter the length of the segment: ";
+        cin >> length;
+
+        cout << "Enter the angle of rotation of the segment: ";
+        cin >> str_angle;
+
+        if(str_angle == "pi") {angle = M_PI;}
+        else if(str_angle == "pi/2") {angle = M_PI_2;}
+        else if(str_angle == "3pi/2") {angle = 3*M_PI_2;}
+        else if(str_angle == "2pi") {angle = 2*M_PI;}
+        else {angle = stod(str_angle);}
+
+        segptr[num-1].setStartPoint(x, y);
+        segptr[num-1].setLength(length);
+        segptr[num-1].setAngle(angle);
+    }
 }
 
 //Function to print out the pose of the robot into a PNG file called "Plot.png"

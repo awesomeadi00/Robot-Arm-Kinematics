@@ -29,6 +29,7 @@ public:
     void resetRobot();
     void printSegNumInfo(int num);
     void printPose();
+    void editSegment(int num);
     void kinematicAnalysis();
     void printAll();
 };
